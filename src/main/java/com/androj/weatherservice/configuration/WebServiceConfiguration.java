@@ -1,11 +1,10 @@
-package com.androj.configuration;
+package com.androj.weatherservice.configuration;
 
 import com.androj.weatherservice.endpoint.WeatherServiceEndpoint;
 import de.codecentric.namespace.weatherservice.WeatherService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.jaxws.EndpointImpl;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
