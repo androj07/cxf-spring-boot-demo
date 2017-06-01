@@ -13,16 +13,16 @@ import de.codecentric.namespace.weatherservice.general.WeatherReturn;
 public class WeatherServiceEndpoint implements WeatherService {
     @Override
     public WeatherInformationReturn getWeatherInformation(String zip) throws WeatherException {
-        return null;
+        return new WeatherInformationReturn();
     }
 
     @Override
     public ForecastReturn getCityForecastByZIP(ForecastRequest forecastRequest) throws WeatherException {
-        return null;
+        return new ForecastReturn();
     }
 
     @Override
     public WeatherReturn getCityWeatherByZIP(ForecastRequest forecastRequest) throws WeatherException {
-        return null;
+        return new WeatherReturn();
     }
 }

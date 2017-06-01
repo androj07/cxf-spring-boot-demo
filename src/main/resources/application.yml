@@ -1,2 +1,5 @@
 cxf:
-  path: /soap-api
+  path: /
+webservices:
+  weatherservice:
+    path: WeatherSoapService_1.0

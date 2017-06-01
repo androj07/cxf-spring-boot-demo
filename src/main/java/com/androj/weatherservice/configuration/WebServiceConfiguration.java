@@ -5,6 +5,7 @@ import de.codecentric.namespace.weatherservice.WeatherService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.jaxws.EndpointImpl;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,12 @@ import javax.xml.ws.Endpoint;
  */
 @Configuration
 public class WebServiceConfiguration {
+
+    @Value("${cxf.path}")
+    private String rootPath;
+
+    @Value("${webservices.weatherservice.path}")
+    private String servicePath;
 
     @Bean
     public WeatherService weatherService(){
@@ -29,8 +36,7 @@ public class WebServiceConfiguration {
     @Bean
     public Endpoint endpoint(){
         EndpointImpl endpoint = new EndpointImpl(springBus(), weatherService());
-        endpoint.publish("/WeatherSoapService_1.0");
-        endpoint.setWsdlLocation("Weather1.0.wsdl");
+        endpoint.publish(rootPath+servicePath);
         return endpoint;
     }
 }
