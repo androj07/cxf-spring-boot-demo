@@ -1,5 +1,7 @@
 package com.androj.weatherservice.configuration;
 
+import com.androj.weatherservice.business.DummyWeatherInfoStub;
+import com.androj.weatherservice.business.WeatherInfoSupplier;
 import com.androj.weatherservice.endpoint.WeatherServiceEndpoint;
 import de.codecentric.namespace.weatherservice.WeatherService;
 import org.apache.cxf.Bus;
@@ -24,8 +26,13 @@ public class WebServiceConfiguration {
     private String servicePath;
 
     @Bean
+    WeatherInfoSupplier weatherInfoSupplier(){
+        return new DummyWeatherInfoStub();
+    }
+
+    @Bean
     public WeatherService weatherService(){
-        return new WeatherServiceEndpoint();
+        return new WeatherServiceEndpoint(weatherInfoSupplier());
     }
 
     @Bean(name= Bus.DEFAULT_BUS_ID)
